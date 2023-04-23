@@ -24,8 +24,8 @@ body {
   flex-direction: column;
   background-color: rgb(33,33,33,0.7);
   margin-left: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   opacity: 100%;
   
 }
@@ -45,7 +45,7 @@ body {
 
 
 .start {
-  margin-top: 100px;
+  margin-top: 90px;
   margin-bottom: 5rem;
   text-align: center;
   font-size: 35px;
@@ -58,7 +58,7 @@ body {
 
 
 .input-place p {
-  margin-top: 54PX;
+  margin-top: -30px;
   color:rgba(255, 255, 255, 0);
   font-size: 15px;
   text-align: center;
@@ -88,20 +88,32 @@ body {
   cursor: pointer;
   
 }
+#indicators{
+margin-left: 2rem;
+margin-right: 1rem;
 
+}
 #forecast {
   margin-top: 3rem;
   margin-bottom: 8.75rem;
+  margin-left: -1rem;
   height: 2.4rem;
-  width:7rem;
+  width:6rem;
   font-size: 16px;
+
  
 }
 #n_days {
   height: 2rem;
   margin-top: 3rem;
   border-radius: 5px;
+  width: 140px;
   
+}
+#my-date-picker-range{
+width: 290px;
+
+
 }
 .buttons button {
   margin-top: 2rem;

@@ -58,11 +58,11 @@ app.layout = html.Div(
         html.Div(
             [
                 # Navigation
-                html.P("BULL-STOCKS", className="start"),
+                html.P("BULLSTOCKS", className="start"),
                 html.Div([
                     html.P("Input stock code: "),
                     html.Div([
-                        dcc.Input(id="dropdown_tickers", type="text"),
+                        dcc.Input(placeholder =" Enter stock code ",id="dropdown_tickers", type="text"),
                         html.Button("Submit", id='submit'),
                     ],
                              className="form")
@@ -73,7 +73,7 @@ app.layout = html.Div(
                                         min_date_allowed=dt(1995, 8, 5),
                                         max_date_allowed=dt.now(),
                                         initial_visible_month=dt.now(),
-                                        end_date=dt.now().date()),
+                    ),
                 ],
                          className="date"),
                 html.Div([
@@ -81,14 +81,13 @@ app.layout = html.Div(
                         "Stocksn", className="stockn-btn", id="stockn"),
                     html.Button(
                         "Stock Price", className="stock-btn", id="stock"),
-                    html.Button(
-                        "View", className="indicatorsn-btn", id="indicatorsn"),
+
                     html.Button("Indicator",
                                 className="indicators-btn",
                                 id="indicators"),
                     dcc.Input(id="n_days",
                               type="text",
-                              placeholder="number of days"),
+                              placeholder=" Number of days"),
                     html.Button(
                         "Forecast", className="forecast-btn", id="forecast")
                 ],
@@ -139,13 +138,13 @@ app.layout = html.Div(
 def update_data(n, val):  # input parameter(s)
     if n == None:
         return html.Div([
-            html.H1("Instruction :"),
+            html.H1(["Instruction :" , html.Br(), html.Br()]),
             html.P(" 1. Enter the stock code."),
             html.P(" 2. Click on Stocksn button to see the price of stock till date, in form of graph."),
             html.P(" 3. Click on Stock Price button after selecting the duration, i.e. selecting the dates from which we want to see the price of stock."),
             html.P(" 4. Click on view button to see the Main-Margin and Main-Payout dounut diagram."),
             html.P(" 5. Click on indicator button to see Average vs Date graph"),
-            html.P(" 6. Click on Forecast button after selecting numbers of days for which you want to predict the value of stock"),
+            html.P([" 6. Click on Forecast button after selecting numbers of days for which you want to predict the value of stock", html.Br(),html.Br()]),
             html.P(" (NOTE: This can predict the value of stocks for next 60 days. ) ")
             
 
@@ -158,9 +157,8 @@ def update_data(n, val):  # input parameter(s)
             ticker = yf.Ticker(val)
             inf = ticker.info
             df = pd.DataFrame().from_dict(inf, orient="index").T
-            df[['logo_url', 'shortName', 'longBusinessSummary']]
-            return df['longBusinessSummary'].values[0], df['logo_url'].values[
-                0], df['shortName'].values[0], None, None, None
+            df[['longName', 'shortName', 'longBusinessSummary']]
+            return df['longBusinessSummary'].values[0], df['shortName'].values[0], df['longName'].values[0], None, None, None
 
 
 #callback for stockn graphs
@@ -211,52 +209,11 @@ def stock_price(n, start_date, end_date, val):
 
 @app.callback(
             [Output("main-contentn", "children"), Output("stockn", "n_clicks")],
-            [Input("indicatorsn", "n_clicks")],
+            [Input("stockn", "n_clicks")],
             [State("dropdown_tickers", "value")]
 )
 
-def indicatorsn(v, v2):
-    if v == None:
-        raise PreventUpdate
-    if v2 == None:
-        raise PreventUpdate
-    ticker = yf.Ticker(v2)
 
-
-    df_calendar = ticker.calendar.T
-    df_info = pd.DataFrame.from_dict(ticker.info, orient="index").T
-    df_info.to_csv("test.csv")
-    df_info = df_info[["priceToBook", "profitMargins", "bookValue", "enterpriseToEbitda", "shortRatio", "beta", "payoutRatio", "trailingEps"]]
-    
-    
-
-    df_calendar["Earnings Date"] = pd.to_datetime(df_calendar["Earnings Date"])
-    df_calendar["Earnings Date"] = df_calendar["Earnings Date"].dt.date
-
-    tbl = html.Div([
-             html.Div([
-        html.Div([
-            html.H4("Price To Book"),
-            html.P(df_info["priceToBook"])
-        ]),
-        html.Div([
-            html.H4("Enterprise to Ebitda"),
-            html.P(df_info["enterpriseToEbitda"])
-        ]),
-        html.Div([
-            html.H4("Beta"),
-            html.P(df_info["beta"])
-        ]),
-    ], className="kpi"), 
-        html.Div([
-            dcc.Graph(figure=get_dounts(df_info["profitMargins"], "Margin")),
-            dcc.Graph(figure=get_dounts(df_info["payoutRatio"], "Payout"))
-        ], className="dounuts")
-        ])
-       
-    
-    return [
-        html.Div([tbl], id="graphs-contentn")], None
 
 
 
