@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  background-image: linear-gradient(to bottom right, rgb(67,206,162,0.7) , rgb(24,90,157,0.7));
+  
+}
+
+.nav {
+  /*position: fixed;*/
+  width: 25vw;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: rgb(33,33,33,0.7);
+  margin-left: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  opacity: 100%;
+  
+}
+
+.content {
+  border: black;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 20px;
+  margin: 50px;
+  width: 65vw;
+  padding: 1rem 5rem;
+  background: #fff;
+  box-shadow: 0px 0px 10px 3px #555555;
+  
+}
+
+
+.start {
+  margin-top: 100px;
+  margin-bottom: 5rem;
+  text-align: center;
+  font-size: 35px;
+  font-family: 'Archivo Black', sans-serif;
+  color: rgb(255, 255, 255);
+
+  
+}
+
+
+
+.input-place p {
+  margin-top: 54PX;
+  color:rgba(255, 255, 255, 0);
+  font-size: 15px;
+  text-align: center;
+  
+}
+
+.form {
+  display: flex;
+  margin-bottom: 2rem;
+  height: 2rem;
+  
+}
+.form button {
+  width: 5rem;
+  color: #121212;
+  background-image: linear-gradient(to bottom right, rgb(222, 98, 98) , rgb(255, 184, 140));
+  
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-around;
+  transition: all 0.5s;
+  cursor: pointer;
+  
+}
+
+#indicators{
+  margin-left: 1.5rem;
+  margin-right: 2rem;
+}
+#stockn{
+  margin-left: 0rem;
+}
+#indicatorsn{
+width: 1px;
+margin-left: 1.5rem;
+  
+
+}
+
+#forecast {
+  margin-top: 3rem;
+  margin-bottom: 8.75rem;
+  height: 2.4rem;
+  width:7rem;
+  font-size: 16px;
+  margin-left: -1rem;
+ 
+}
+#n_days {
+  height: 2rem;
+  margin-top: 3rem;
+  border-radius: 5px;
+  width: 140px;
+ 
+  }
+  #my-date-picker-range{
+    width: 290px;
+    
+    
+    }
+.buttons button {
+  margin-top: 2rem;
+  width: 6.5rem;
+  height: 2.5rem;
+  border-radius: 15px;
+  background-image: linear-gradient(to bottom right, rgb(222, 98, 98) , rgb(255, 184, 140));
+  color: #121212  ;
+  margin-left: 1.5rem;
+  font-size: 16px;
+  transition: all 0.5s;
+  cursor: pointer;
+  
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-family: 'Archivo Black', sans-serif;
+  font-family: 'Russo One', sans-serif;
+  
+}
+.header p {
+  font-size: 60px;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  line-height: 80%;
+
+}
+
+.dounuts{
+  display:flex;
+  overflow:hidden;
+  flex-direction: row;
+}
+.dounuts div {
+  width: 50%;
+}
+.kpi {
+  
+  display: flex;
+  flex-direction: row;
+
+}
+.kpi div {
+  margin-left:160px;
+  width:20%;
+  height:10vh;
+  padding-bottom: 15px;
+  padding-top: 5px;
+  border-radius:20px ;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom right, rgb(222, 98, 98) , rgb(255, 184, 140));
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.kpi div P {
+  margin-top: 15px;
+  color:rgba(255, 255, 255, 0.89);
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.kpi div H4 {
+  margin-top: 15px;
+}
+
+#logo {
+    position: absolute;
+    width: 60px;
+    height:60px;
+    align-self: center;
+    right: 7%;
+    opacity: 0%;
+  
+}
+#ticker{
+  font-family: 'Stick No Bills', sans-serif;
+}
